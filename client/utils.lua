@@ -53,6 +53,12 @@ function GetStreetAndZone(coords)
     return street .. ", " .. zone
 end
 
+ps.registerCallback("ps-dispatch:clientCb:GetStreetAndZone", function(coords)
+    local data = GetStreetAndZone(coords)
+    return data
+end)
+
+
 ---@param vehicle string
 ---@return string
 local function getVehicleColor(vehicle)
@@ -70,6 +76,7 @@ local function getVehicleColor(vehicle)
         return "Unknown"
     end
 end
+
 
 ---@param vehicle string
 ---@return string
@@ -94,10 +101,17 @@ local function getVehicleDoors(vehicle)
     return doorCount
 end
 
----@param vehicle string
+---@param veh string
 ---@return table
-function GetVehicleData(vehicle)
+function GetVehicleData(veh)
     local data = {}
+    local vehicle
+
+    if NetworkGetEntityIsNetworked(veh) then
+        vehicle = veh
+    else
+        vehicle = NetToVeh(veh)
+    end
 
     local vehicleClass = {
         [0] = locale('compact'),
@@ -127,6 +141,11 @@ function GetVehicleData(vehicle)
 
     return data
 end
+
+ps.registerCallback("ps-dispatch:clientCb:GetVehicleData", function(vehicle)
+    local data = GetVehicleData(vehicle)
+    return data
+end)
 
 function PhoneAnimation()
     lib.requestAnimDict("cellphone@in_car@ds", 500)

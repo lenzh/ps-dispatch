@@ -2,7 +2,7 @@
 
 Integrated with [ps-mdt](https://github.com/Project-Sloth/ps-mdt)
 
-For all support questions, ask in our [Discord](https://www.discord.gg/projectsloth) support chat. 
+For all support questions, ask in our [Discord](https://www.discord.gg/projectsloth) support chat.
 Do not create issues on GitHub if you need help. Issues are for bug reporting and new features only.
 
 # Depedency
@@ -38,7 +38,7 @@ Dispatch notifications are sent containing only the alert name, omitting additio
 
 - Place this `setr ox:locale en` inside your `server.cfg`
 - Change the `en` to your desired language!
-  
+
 **Supported Languages:**
 | **Alias**     | **Language Names** |
 |--------------|---------------|
@@ -52,6 +52,7 @@ Dispatch notifications are sent containing only the alert name, omitting additio
 # Preset Alert Exports.
 
 ```lua
+- Client side exports
 - exports['ps-dispatch']:ArtGalleryRobbery()
 - exports['ps-dispatch']:CarBoosting(vehicle)
 - exports['ps-dispatch']:CarJacking(vehicle)
@@ -87,6 +88,35 @@ Dispatch notifications are sent containing only the alert name, omitting additio
 - exports['ps-dispatch']:VehicleTheft(vehicle)
 - exports['ps-dispatch']:YachtHeist()
 - exports['ps-dispatch']:BobcatSecurityHeist()
+
+- Server side exports
+
+- exports['ps-dispatch']:CustomAlert(source, data)
+- exports['ps-dispatch']:ArtGalleryRobbery(source)
+- exports['ps-dispatch']:CarBoosting(source, vehicle)
+- exports['ps-dispatch']:CarJacking(source, vehicle)
+- exports['ps-dispatch']:DrugBoatRobbery(source)
+- exports['ps-dispatch']:DrugSale(source)
+- exports['ps-dispatch']:FleecaBankRobbery(source, camId)
+- exports['ps-dispatch']:HouseRobbery(source)
+- exports['ps-dispatch']:HumaneRobbery(source)
+- exports['ps-dispatch']:OfficerBackup(source)
+- exports['ps-dispatch']:OfficerInDistress(source)
+- exports['ps-dispatch']:PacificBankRobbery(source, camId)
+- exports['ps-dispatch']:PaletoBankRobbery(source, camId)
+- exports['ps-dispatch']:PrisonBreak(source)
+- exports['ps-dispatch']:SignRobbery(source)
+- exports['ps-dispatch']:StoreRobbery(source, camId)
+- exports['ps-dispatch']:SuspiciousActivity(source)
+- exports['ps-dispatch']:TrainRobbery(source)
+- exports['ps-dispatch']:UndergroundRobbery(source)
+- exports['ps-dispatch']:UnionRobbery(source)
+- exports['ps-dispatch']:VangelicoRobbery(source, camId)
+- exports['ps-dispatch']:VanRobbery(source)
+- exports['ps-dispatch']:VehicleTheft(source, vehicle)
+- exports['ps-dispatch']:YachtHeist(source)
+- exports['ps-dispatch']:BobcatSecurityHeist(source)
+
 ```
 # Steps to Create New Alert
 Add the following into your `alerts.lua` and change to your liking:
@@ -136,13 +166,13 @@ Information about each parameter is in the `alerts.lua` file.
 # FAQ
 * There are no calls showing on dispatch or mdt list.
   - Make sure you have a job type specified in your qbcore/shared/jobs.lua like:
-  
+
     ![image](https://github.com/Project-Sloth/ps-dispatch/assets/9503151/7834e878-5020-4fcc-8864-03d44120c160)
 
   - Make sure that you're using the correct job type as leo and make sure your [qb-core](https://github.com/qbcore-framework/qb-core) is fully updated to the latest version.
   - On shared/config.lua make set Config.Debug = true to test calls as police officer.(ONLY to be used as testing, make sure to disable on live production)
 
-* How to change colors of the calls? 
+* How to change colors of the calls?
   - Priority 1 is red and priority 2 is normal on the config.
 
 * To increase the time that calls are shown on the screen, do the following:
